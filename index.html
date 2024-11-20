@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>书摘卡片效果</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="side-controls">
+            <div class="color-picker">
+                <button class="color-btn red active" data-color="red"></button>
+                <button class="color-btn blue" data-color="blue"></button>
+                <button class="color-btn purple" data-color="purple"></button>
+                <button class="color-btn green" data-color="green"></button>
+                <button class="color-btn pink" data-color="pink"></button>
+                <button class="color-btn orange" data-color="orange"></button>
+            </div>
+            <button class="download-btn" id="downloadBtn">
+                <span class="download-icon">💾</span>
+                <span class="download-text">保存图片</span>
+            </button>
+        </div>
+        
+        <div class="card">
+            <div class="card-content">
+                <div class="header">
+                    <span class="icon" contenteditable="true">📚</span>
+                    <span class="date">2024年11月20日</span>
+                </div>
+                <h2 contenteditable="true">👋 hi 你好</h2>
+                <div class="editable-content" contenteditable="true"><p>💡 你可以在这里输入文字尝试一下。</p><p>- 支持自定义文字内容</p><p>- 实时字数统计，帮助控制内容长度</p><p>- 支持导出为高清PNG图片</p><p>- 二维码可修改</p><p></p></div>
+                
+                <div class="author-section">
+                    <div class="author" contenteditable="true">牛经理</div>
+                    <div class="word-count">字数：<span id="wordCount">86</span></div>
+                </div>
+                
+                <div class="footer">
+                    <div class="footer-text">
+                        <div class="qr-text-group">
+                            <div class="card-name" contenteditable="true">书摘卡片</div>
+                            <div class="qr-code" contenteditable="true">扫描二维码</div>
+                            <button class="qr-toggle" id="qrToggle">👁️</button>
+                        </div>
+                    </div>
+                    <div class="qr-upload" id="qrUploadContainer">
+                        <input type="file" id="qrUpload" accept="image/*" style="display: none;">
+                        <img src="qr-code.png" alt="二维码" class="qr-image" id="qrImage">
+                        <div class="upload-hint">点击更换图片</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html> 

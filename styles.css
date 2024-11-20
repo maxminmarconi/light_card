@@ -1,0 +1,453 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #1a1a1a;
+    margin: 0;
+}
+
+.container {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 20px;
+}
+
+.card {
+    position: relative;
+    width: 350px;
+    min-height: 550px;
+    background: var(--theme-bg);
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    transition: all 0.5s ease;
+    --theme-color: rgba(255, 0, 0, 0.7);
+    --theme-bg: rgba(255, 255, 255, 0.85);
+    box-shadow: 0 0 30px var(--theme-color);
+    border: 1px solid var(--theme-color);
+}
+
+.card::before {
+    content: '';
+    position: absolute;
+    width: 150%;
+    height: 150%;
+    top: -25%;
+    left: -25%;
+    animation: rotate 20s linear infinite;
+    transition: background 0.5s ease;
+}
+
+.card::after {
+    content: '';
+    position: absolute;
+    inset: 2px;
+    background: var(--theme-bg);
+    border-radius: 18px;
+    opacity: 0.9;
+    backdrop-filter: blur(10px);
+}
+
+.card-content {
+    position: relative;
+    z-index: 1;
+    color: #000;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    min-height: 100%;
+    box-sizing: border-box;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.date {
+    color: #444;
+    font-size: 14px;
+}
+
+.card-content h2 {
+    font-size: 24px;
+    margin: 15px 0;
+    color: #000;
+    font-weight: 600;
+}
+
+.card-content p {
+    color: #222;
+    line-height: 1.6;
+    margin: 8px 0;
+}
+
+.footer {
+    margin-top: auto;
+    padding-top: 20px;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-text {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.card-name {
+    color: #444;
+    font-size: 14px;
+}
+
+.qr-text-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.qr-code {
+    color: #444;
+    font-size: 14px;
+}
+
+.qr-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 2px;
+    font-size: 14px;
+    opacity: 0.6;
+    transition: all 0.3s ease;
+}
+
+.qr-toggle:hover {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+.qr-upload {
+    position: relative;
+    width: 60px;
+    height: 60px;
+    margin: 0;
+}
+
+.qr-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.color-picker {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 12px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+}
+
+.color-btn {
+    width: 32px;
+    height: 32px;
+    border: 2px solid transparent;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.color-btn.active {
+    border: 3px solid #fff;
+    transform: scale(1.1);
+    box-shadow: 0 0 15px var(--theme-color);
+}
+
+.color-btn:hover {
+    transform: scale(1.15);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+}
+
+.red {
+    background: linear-gradient(45deg, #ff0000, #ff4444);
+}
+
+.blue {
+    background: linear-gradient(45deg, #0066ff, #00ccff);
+}
+
+.purple {
+    background: linear-gradient(45deg, #9c27b0, #673ab7);
+}
+
+.green {
+    background: linear-gradient(45deg, #4CAF50, #8BC34A);
+}
+
+.pink {
+    background: linear-gradient(45deg, #ff1493, #ff69b4);
+}
+
+.orange {
+    background: linear-gradient(45deg, #ff6b00, #ff9800);
+}
+
+.card.red-gradient::before {
+    background: linear-gradient(
+        45deg,
+        rgba(255, 0, 0, 0.7),
+        rgba(255, 68, 68, 0.7),
+        rgba(255, 100, 100, 0.7),
+        rgba(255, 0, 0, 0.7)
+    );
+}
+
+.card.blue-gradient::before {
+    background: linear-gradient(
+        45deg,
+        rgba(0, 102, 255, 0.7),
+        rgba(0, 204, 255, 0.7),
+        rgba(0, 153, 255, 0.7),
+        rgba(0, 102, 255, 0.7)
+    );
+}
+
+.card.purple-gradient::before {
+    background: linear-gradient(
+        45deg,
+        rgba(156, 39, 176, 0.7),
+        rgba(103, 58, 183, 0.7),
+        rgba(156, 39, 176, 0.7),
+        rgba(103, 58, 183, 0.7)
+    );
+}
+
+.card.green-gradient::before {
+    background: linear-gradient(
+        45deg,
+        rgba(76, 175, 80, 0.7),
+        rgba(139, 195, 74, 0.7),
+        rgba(76, 175, 80, 0.7),
+        rgba(139, 195, 74, 0.7)
+    );
+}
+
+.card.pink-gradient::before {
+    background: linear-gradient(
+        45deg,
+        rgba(255, 20, 147, 0.7),
+        rgba(255, 105, 180, 0.7),
+        rgba(255, 20, 147, 0.7),
+        rgba(255, 105, 180, 0.7)
+    );
+}
+
+.card.orange-gradient::before {
+    background: linear-gradient(
+        45deg,
+        rgba(255, 107, 0, 0.7),
+        rgba(255, 152, 0, 0.7),
+        rgba(255, 107, 0, 0.7),
+        rgba(255, 152, 0, 0.7)
+    );
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg) scale(1.1);
+    }
+    50% {
+        transform: rotate(180deg) scale(1.2);
+    }
+    100% {
+        transform: rotate(360deg) scale(1.1);
+    }
+}
+
+/* 添加边控制区样式 */
+.side-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.download-btn {
+    background: rgba(255, 255, 255, 0.05);
+    border: none;
+    border-radius: 15px;
+    padding: 12px;
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.download-btn:hover {
+    background: var(--theme-color);
+    color: #333;
+    transform: translateY(-2px);
+}
+
+.download-icon {
+    font-size: 24px;
+}
+
+.download-text {
+    font-size: 12px;
+    opacity: 0.8;
+}
+
+/* 添加下载时的加载状态 */
+.download-btn.loading {
+    opacity: 0.7;
+    cursor: wait;
+}
+
+.download-btn.loading .download-icon {
+    animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+/* 添加可编辑内容的样式 */
+[contenteditable="true"] {
+    outline: none;
+    padding: 2px 4px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+[contenteditable="true"]:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+    color: #333;
+}
+
+[contenteditable="true"]:focus {
+    background-color: rgba(0, 0, 0, 0.08);
+    color: #333;
+}
+
+.editable-content {
+    flex-grow: 1;
+    min-height: 100px;
+    outline: none;
+    white-space: pre-wrap;
+}
+
+/* 添加二维码上传相关样式 */
+.qr-upload {
+    position: relative;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: block;
+}
+
+.qr-upload:hover {
+    opacity: 0.8;
+}
+
+.qr-upload:hover .upload-hint {
+    opacity: 1;
+}
+
+.upload-hint {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    font-size: 12px;
+    padding: 4px;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+}
+
+.qr-image {
+    width: 60px;
+    height: 60px;
+    margin-top: 5px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+/* 添加二维码控制相关样式 */
+.qr-controls {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 4px;
+}
+
+.qr-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 2px;
+    font-size: 14px;
+    opacity: 0.6;
+    transition: all 0.3s ease;
+}
+
+.qr-toggle:hover {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+.qr-upload.hidden {
+    display: none;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* 修改作者区域样式 */
+.author-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 20px;
+    padding: 10px 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.author {
+    color: #444;
+    font-size: 14px;
+}
+
+.word-count {
+    color: #444;
+    font-size: 16px;
+    margin-left: auto;
+    font-weight: 600;
+}
+
+#wordCount {
+    font-size: 18px;
+    font-weight: 700;
+    color: #333;
+} 
